@@ -25,7 +25,7 @@ body {
     flex-direction: column;
 }
 
-.image-upload {
+.image-upload { 
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -39,7 +39,7 @@ body {
 
 label {
     cursor: pointer;
-    font-size: 1em;
+    font-size: 3em;
 }
 
 #chooseFile {
@@ -70,12 +70,12 @@ label {
     justify-content: center;
     align-items: center;
     margin-left: 10px;
-    background-color: black;
+    background-color: #66ccff;
     color: white;
     border-radius: 30px;
     padding: 10px;
     font-size: 0.8em;
-
+	
     cursor: pointer;
 }
 
@@ -86,17 +86,47 @@ label {
     align-items: center;
     margin: 200px auto;
     width: 40%;
-    height: 40%;
+    height: 100%;
+	border-style: dotted;
 }
 
 .img {
     position: absolute;
+	width: 40%;
+    height: 40%;
+}
+
+@font-face {
+    font-family: 'ghanachoco';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ghanachoco.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	font-size: 20px;
+}
+
+h1 {
+	font-family: 'ghanachoco';
+	text-align : center;
+	padding-top: 5%;
+	margin-bottom: 15px;
+	font-size: 88px;
+}
+
+h3 {
+	text-align : center;
+	margin: auto;
+	font-size: 28px;
 }
 
 </style>
 
 
 <body>
+
+	<h1> Show me the LandMark </h1>
+	<h3> 서울의 랜드마크 찾기! <br>
+		 장소이미지를 업로드하여 서울에 있는 랜드마크에 대한 정보를 얻어보자 </h3>
+
     <div class="container">
         <div class="image-upload" id="image-upload">
 
@@ -104,19 +134,19 @@ label {
                 <div class="button">
                     <label for="chooseFile">
                         👉 CLICK HERE! 👈
-                    </label>
+					</label>
                 </div>
                 <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
             </form>
 
             <div class="fileContainer">
                 <div class="fileInput">
-                    <p>FILE NAME: </p>
+              <!--      <p>FILE NAME: </p>		-->
                     <p id="fileName"></p>
                 </div>
                 <div class="buttonContainer">
-                    <div class="submitButton" id="submitButton">SUBMIT</div>
-                </div>
+                    <button=type="button" onclick="location.href='Search.html';"> 검색 </button>
+				</div>
             </div>
         </div>
         
@@ -124,9 +154,6 @@ label {
     </div>
 
     <script>
-	
-	var submit = document.getElementById('submitButton');
-submit.onclick = showImage;     //Submit 버튼 클릭시 이미지 보여주기
 
 function showImage() {
     var newImage = document.getElementById('image-show').lastElementChild;
@@ -149,9 +176,9 @@ function loadFile(input) {
 
     newImage.src = URL.createObjectURL(file);   
 
-    newImage.style.width = "70%";
-    newImage.style.height = "70%";
-    newImage.style.visibility = "0";   //버튼을 누르기 전까지는 이미지 숨기기
+    newImage.style.width = "auto";
+    newImage.style.height = "auto";
+    newImage.style.visibility = "0";   
     newImage.style.objectFit = "contain";
 
     var container = document.getElementById('image-show');
